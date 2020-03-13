@@ -1,10 +1,12 @@
 pipeline {
-    agent any
-    stages {
-        stage('Build') {
-            steps {
-                sh './mvnw package' 
-            }
-        }
+  agent any
+  stages {
+    stage('Build') {
+      agent any
+      steps {
+        sh './mvnw package'
+      }
     }
+
+  }
 }
