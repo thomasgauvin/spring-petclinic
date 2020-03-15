@@ -32,10 +32,10 @@ pipeline {
   }
    post {  
      success {  
-         mail bcc: '', body: "<b>Build STATUS</b><br>Project: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} <br> URL of build: ${env.BUILD_URL}", cc: '', charset: 'UTF-8', from: '', mimeType: 'text/html', replyTo: '', subject: "Build PASSED: spring-petclinic -> ${env.JOB_NAME}", to: "thomasgauvin.cu@gmail.com";  
+      slackSend (color: '#00FF00', message: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
      }  
      failure {  
-         mail bcc: '', body: "<b>Build STATUS</b><br>Project: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} <br> URL of build: ${env.BUILD_URL}", cc: '', charset: 'UTF-8', from: '', mimeType: 'text/html', replyTo: '', subject: "Build FAILED: spring-petclinic -> ${env.JOB_NAME}", to: "thomasgauvin.cu@gmail.com";  
+      slackSend (color: '#FF0000', message: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
      }  
    }  
 }
