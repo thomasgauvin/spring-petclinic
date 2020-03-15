@@ -4,7 +4,7 @@ pipeline {
     stage('Build') {
       agent any
       steps {
-        sh 'mvn clean build'
+        sh './mvnw package'
       }
     }
 
@@ -16,7 +16,7 @@ pipeline {
 
     stage('Package') {
       steps {
-        sh './mvnw package'
+        sh 'mvn package'
       }
     }
 
